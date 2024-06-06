@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Content</title>
+    <style>
+        body {
+            background-color: rgb(64, 165, 237);
+        }
+
+        .container {
+            display: flex;
+            overflow: hidden;
+            width: 90%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .scrolling-wrapper {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+
+        .scrolling-wrapper div {
+            flex: 0 0 25%; /* Show 4 items at a time */
+        }
+
+        .scrolling-wrapper div a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit; /* Ensure link text is not underlined and inherits color */
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="scrolling-wrapper">
+            <div><a href="#"><img id="11368473" src="images/#.png" alt="#" /><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem sequi alias optio similique voluptatem non facilis blanditiis temporibus odit quidem, ut porro necessitatibus iste quibusdam explicabo itaque quos inventore repudiandae id obcaecati expedita incidunt? Iusto magni quam magnam explicabo, numquam consequuntur velit sapiente voluptates omnis, reprehenderit nulla nobis unde ipsum!</p><span>Read More...</span></a></div>
+            <div><a href="#"><img id="11369043" src="images/#.png" alt="#" /><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem sequi alias optio similique voluptatem non facilis blanditiis temporibus odit quidem, ut porro necessitatibus iste quibusdam explicabo itaque quos inventore repudiandae id obcaecati expedita incidunt? Iusto magni quam magnam explicabo, numquam consequuntur velit sapiente voluptates omnis, reprehenderit nulla nobis unde ipsum!</p><span>Read More...</span></a></div>
+            <div><a href="#"><img id="11369044" src="images/#.png" alt="#" /><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem sequi alias optio similique voluptatem non facilis blanditiis temporibus odit quidem, ut porro necessitatibus iste quibusdam explicabo itaque quos inventore repudiandae id obcaecati expedita incidunt? Iusto magni quam magnam explicabo, numquam consequuntur velit sapiente voluptates omnis, reprehenderit nulla nobis unde ipsum!</p><span>Read More...</span></a></div>
+            <div><a href="#"><img id="11369045" src="images/#.png" alt="#" /><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem sequi alias optio similique voluptatem non facilis blanditiis temporibus odit quidem, ut porro necessitatibus iste quibusdam explicabo itaque quos inventore repudiandae id obcaecati expedita incidunt? Iusto magni quam magnam explicabo, numquam consequuntur velit sapiente voluptates omnis, reprehenderit nulla nobis unde ipsum!</p><span>Read More...</span></a></div>
+            <div><a href="#"><img id="11369046" src="images/#.png" alt="#" /><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem sequi alias optio similique voluptatem non facilis blanditiis temporibus odit quidem, ut porro necessitatibus iste quibusdam explicabo itaque quos inventore repudiandae id obcaecati expedita incidunt? Iusto magni quam magnam explicabo, numquam consequuntur velit sapiente voluptates omnis, reprehenderit nulla nobis unde ipsum!</p><span>Read More...</span></a></div>
+            <div><a href="#"><img id="11369047" src="images/#.png" alt="#" /><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem sequi alias optio similique voluptatem non facilis blanditiis temporibus odit quidem, ut porro necessitatibus iste quibusdam explicabo itaque quos inventore repudiandae id obcaecati expedita incidunt? Iusto magni quam magnam explicabo, numquam consequuntur velit sapiente voluptates omnis, reprehenderit nulla nobis unde ipsum!</p><span>Read More...</span></a></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const scrollingWrapper = document.querySelector('.scrolling-wrapper');
+
+            scrollingWrapper.addEventListener('mouseover', function() {
+                scrollingWrapper.style.animationPlayState = 'paused';
+            });
+
+            scrollingWrapper.addEventListener('mouseout', function() {
+                scrollingWrapper.style.animationPlayState = 'running';
+            });
+        });
+    </script>
+</body>
+</html>
