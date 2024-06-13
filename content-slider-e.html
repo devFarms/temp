@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Div Carousel</title>
+    <style>
+        /* static/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.carousel-container {
+    width: 1200px;  /* 4 items at 300px each */
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#carousel {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 300px;  /* Adjust width to fit 4 items in container */
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <ul id="carousel">
+            <li class="carousel-item">Item 1</li>
+            <li class="carousel-item">Item 2</li>
+            <li class="carousel-item">Item 3</li>
+            <li class="carousel-item">Item 4</li>
+            <li class="carousel-item">Item 5</li>
+            <li class="carousel-item">Item 6</li>
+            <li class="carousel-item">Item 7</li>
+            <li class="carousel-item">Item 8</li>
+        </ul>
+    </div>
+    
+    <script>
+        // static/script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('carousel');
+    const items = carousel.getElementsByClassName('carousel-item');
+    const itemWidth = 300;  // Width of each item
+    const itemsVisible = 4; // Number of items visible in the viewport
+    let index = 0;
+    let interval;
+
+    // Duplicate the first few items to enable seamless looping
+    for (let i = 0; i < itemsVisible; i++) {
+        carousel.appendChild(items[i].cloneNode(true));
+    }
+
+    function advanceCarousel() {
+        index++;
+        carousel.style.transition = 'transform 0.5s ease-in-out';
+        carousel.style.transform = `translateX(-${index * itemWidth}px)`;
+
+        // When reaching the end, reset the position to create a looping effect
+        if (index === items.length) {
+            setTimeout(() => {
+                carousel.style.transition = 'none';
+                carousel.style.transform = 'translateX(0)';
+                index = 0;
+            }, 500); // Wait for the transition to complete
+        }
+    }
+
+    function startCarousel() {
+        interval = setInterval(advanceCarousel, 2000);
+    }
+
+    function stopCarousel() {
+        clearInterval(interval);
+    }
+
+    carousel.addEventListener('mouseover', stopCarousel);
+    carousel.addEventListener('mouseout', startCarousel);
+
+    startCarousel();
+});
+
+
+
+    </script>
+</body>
+</html>
