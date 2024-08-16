@@ -6,6 +6,7 @@ const arrRight = document.querySelector('.arrow-right');
 let offset = 0;
 let slideIncrement = 0;
 let slideDecrement = slides.length - 1;
+let intervalId;
 
 arrRight.addEventListener('click', () => {
   arrRight.disabled = true;
@@ -51,8 +52,21 @@ arrLeft.addEventListener('click', () => {
   }, 500);
 });
 
-
 // Automatically trigger the right arrow click event every second
-setInterval(() => {
+function startAutoSlide() {
+  intervalId = setInterval(() => {
     arrRight.click();
   }, 3000);
+}
+
+// Stop automatic sliding
+function stopAutoSlide() {
+  clearInterval(intervalId);
+}
+
+// Start sliding automatically when the script runs
+startAutoSlide();
+
+// Pause on hover
+container.addEventListener('mouseenter', stopAutoSlide);
+container.addEventListener('mouseleave', startAutoSlide);
